@@ -1,23 +1,88 @@
 #app.rb
-require "sinatra"
-require "sinatra/flash"
-require "sinatra/activerecord"
+require 'sinatra'
+require 'sinatra/flash'
+require 'sinatra/reloader'
+require 'sinatra/activerecord'
+require './models/user'
+require './models/tags'
+require './models/post'
+require './models/tags_to_multiple_posts'
+
 
 enable :sessions
 
 set :database, {adapter: 'postgresql', database: 'travelblog'}
 
+
+
+get "/profile" do
+  @post = Post.all
+  erb :profile, :layout => :profile
+end
+
+#Create Post 
+# get "/post" do
+#   @post = Post.all
+#   erb :blog, :layout => :new_layout
+# end
+
+
+get "/post" do
+   @user
+ @post = Post.all
+ @user = User.find(session[:user_id]) 
+ @user_id = User.find(session[:user_id])
+ erb :blog, :layout => :new_layout
+end
+
+
+post "/post" do 
+ @post = Post.create(
+  user_id: params[:user_id],
+  title: params[:title],
+  text_content: params[:text_content],
+  image: params[:image]
+ )
+ redirect '/profile'
+end
+
+get "/post/:id" do
+  @post = Post.find(params[:id])
+  erb :blog, :layout => :profile
+  redirect '/profile'
+end
+
+get "/post/edit/:id" do
+  @post = Post.find(params[:id])
+  erb :blog, :layout => :profile
+  redirect '/profile'
+end
+
+get "/edit" do
+  if session[:user_id]
+  erb :edit,:layout => :edit
+  else 
+    erb :edit
+  end
+end
+
+get "/new_layout" do
+  redirect "/"
+end
+
+
 get "/" do
     if session[:user_id]
-      erb :signed_in_homepage
+      erb :sign_in_layout
     else
-      erb :signed_out_homepage
+      erb :signed_out_layout
     end
   end
 
+
   # displays sign in form
 get "/sign-in" do
-    erb :sign_in
+    erb :sign_in 
   end
   
   # responds to sign in form
@@ -34,7 +99,7 @@ post "/sign-in" do
     flash[:info] = "You have been signed in"
 
     # redirects to the home page
-    redirect "/"
+    redirect "/profile"
   else
     # lets the user know that something is wrong
     flash[:warning] = "Your username or password is incorrect"
@@ -54,8 +119,12 @@ end
 
 post "/sign-up" do
   @user = User.create(
+    firstname: params[:firstname],
+    lastname: params[:lastname],
     username: params[:username],
-    password: params[:password]
+    password: params[:password],
+    email:    params[:email],
+    birthday: params[:birthday]
   )
 
   # this line does the signing in
@@ -82,10 +151,11 @@ get "/sign-out" do
 end
 
 
-get '/users/:id/edit' do 
+get '/user/:id/edit' do 
   if session[:user_id] == params[:id]
     #Access thier user profile edit page
   else
     #Redirect them and tell them they do not have access to edit other peoples profile pages
   end
 end
+
