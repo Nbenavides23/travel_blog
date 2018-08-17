@@ -11,8 +11,6 @@ require './models/tags_to_multiple_posts'
 
 enable :sessions
 
-set :database, {adapter: 'postgresql', database: 'travelblog'}
-
 
 
 get "/profile" do
