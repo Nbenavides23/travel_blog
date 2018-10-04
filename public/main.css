@@ -68,7 +68,12 @@ ul, nav {
 #table_blog {
   font-family: 'News Cycle', sans-serif;
   background-color: #F6F3F2;
-  height: 2800px;
+  height: 200px;
   width: 900px;
+}
+
+.row_post {
+  width: 500px;
+  height: 500px;
 }
 /*# sourceMappingURL=main.css.map */

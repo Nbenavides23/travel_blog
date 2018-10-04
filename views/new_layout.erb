@@ -19,28 +19,25 @@
   
   <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
   <% if session[:user_id] %>
-    <a href="/profile"><div><i class="fa fa-home fa-2x"></i></div></a>
-    <a href="/post"><div><i class="fa fa-plus fa-2x"></i></div></a>
+ 
+    <a href="/post/new"><div><i class="fa fa-plus fa-2x"></i></div></a>
     <% end %>
   </nav>
 
 <!-- Form to create a Post -->
 <div class="container">
-  <div class="row">
-    <div class="col-xs-7 col-sm-6 col-lg-8">
+  <div class="row_post">
       <form action="/post" method="POST">
         <div class="form-group">
           <label for="blog_post"> Write a Post </label><br>
           <input type="text" name="title" placeholder="Enter title">
-          <input type="text" name="user_id" placeholder="Enter author">
           <textarea id="markItUp" name="text_content" class="form-control" placeholder="Type here" rows="10" cols="20"></textarea>
          <input type="submit" value="Post">
         </div>
       </form>
-    </div>
+
   </div>
 </div>
-
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.js"></script>

@@ -1,0 +1,34 @@
+
+<div class="wrapper">
+<h2> <%=@user.username %>'s Account</h2>
+
+<form method="POST" acion="/users/<%= @user.id %>/edit">
+<input type="hidden" name="_method" value="PUT">
+            <div class="form-group">
+                <input type="text" class="form-control" name="first_name" id="first_name" value="<%=@user.first_name %>">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="last_name" id="last_name" value="<%=@user.last_name %>">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="username" id="username" value="<%=@user.username %>">
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-control" name="email" id="email" value="<%=@user.email %>">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="password" id="password" value="<%=@user.password %>">
+              
+            </div>
+            <div class="form-group">
+                <input type="date" class="form-control" name="birthday" id="birthday" value="<%= @user.birthday %>">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+</div>
+<div>
+<form action="/users/<%= @user.id %>/delete" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" class="btn btn-default" value="Delete Account">
+</form>
+</div>

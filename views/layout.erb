@@ -21,6 +21,7 @@
   <% if session[:user_id] %>
   <a href="/profile"><div><i class="fa fa-home fa-2x"></i></div></a>
   <% end %>
+   
     <h1 id="title">Welcome to the Travel Blog</h1>
     <%= yield %>
     <ul>
@@ -28,10 +29,7 @@
       <% if session[:user_id] %>
 
         <!-- only show this code when signed in -->
-        <button type="button" class="btn btn-outline-primary"><a href="/post"/>Post</a></button
-
-        <!-- clicking on this link will hit the get "/sign-out" route -->
-        <button type="button" class="btn btn-outline-primary"><a href="/sign-out" />Sign out</a></button
+       
       <% else %>
         <!-- only show this code when signed out -->
         <button type="button" class="btn btn-outline-primary"><a href="/sign-in" />Sign In</a></button>
