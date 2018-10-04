@@ -1,6 +1,6 @@
 
 <div class="wrapper">
-<h2> <%=@user.username %>'s Account</h2>
+<h2> <%=@user%>'s Account</h2>
 
 <form method="POST" acion="/users/<%= @user.id %>/edit">
 <input type="hidden" name="_method" value="PUT">
@@ -27,7 +27,7 @@
         </form>
 </div>
 <div>
-<form action="/users/<%= @user.id %>/delete" method="POST">
+<form action="/profile" method="POST">
     <input type="hidden" name="_method" value="DELETE">
     <input type="submit" class="btn btn-default" value="Delete Account">
 </form>

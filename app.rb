@@ -63,6 +63,12 @@ put "/post/:id" do
   redirect '/profile'
 end
 
+
+delete '/posts/:id/delete' do #delete action
+  @post = Post.find_by_id(params[:id])
+  @post.delete
+  redirect to '/profile'
+end
 # get "/edit" do
 #   if session[:user_id]
 #   erb :edit,:layout => :edit
@@ -75,11 +81,7 @@ get "/new_layout" do
   redirect "/"
 end
 
-delete '/posts/:id/delete' do #delete action
-  @post = Post.find_by_id(params[:id])
-  @post.delete
-  redirect to '/profile'
-end
+
 
 
 
@@ -130,25 +132,25 @@ get "/sign-up" do
   erb :sign_up
 end
 
-# post "/sign-up" do
-#   @user = User.create(
-#     firstname: params[:firstname],
-#     lastname: params[:lastname],
-#     username: params[:username],
-#     password: params[:password],
-#     email:    params[:email],
-#     birthday: params[:birthday]
-#   )
+post "/sign-up" do
+  @user = User.create(
+    firstname: params[:firstname],
+    lastname: params[:lastname],
+    username: params[:username],
+    password: params[:password],
+    email:    params[:email],
+    birthday: params[:birthday]
+  )
 
-#   # this line does the signing in
-#   session[:user_id] = @user.id
+  # this line does the signing in
+  session[:user_id] = @user.id
 
-#   # lets the user know they have signed up
-#   flash[:info] = "Thank you for signing up"
+  # lets the user know they have signed up
+  flash[:info] = "Thank you for signing up"
 
-#   # assuming this page exists
-#   redirect "/"
-# end
+  # assuming this page exists
+  redirect "/profile"
+end
 
 # # when hitting this get path via a link
 # #   it would reset the session user_id and redirect
@@ -162,6 +164,19 @@ get "/sign-out" do
   
   redirect "/"
 end
+#Delete User account
+delete '/profile' do
+  @user = User.find(session[:user_id])
+  @user.destroy
+
+  session[:user_id] = nil
+  
+  redirect '/'
+
+  flash[:info] = "Your account has been successfully deleted."
+
+end
+
 
 
 # # get '/user/:id/edit' do 

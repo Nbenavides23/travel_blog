@@ -24,8 +24,8 @@
    
     <h1 id="title">Welcome to the Travel Blog</h1>
     <%= yield %>
+    
     <ul>
-  
       <% if session[:user_id] %>
 
         <!-- only show this code when signed in -->
@@ -63,6 +63,7 @@
       </a>
     </div>
 </div>
+
 <div id="list">
     <h1 id="bucket_list_title">Bucket List</h1>
   <div class="container-fluid">

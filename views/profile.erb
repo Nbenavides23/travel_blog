@@ -8,9 +8,15 @@
 
 <div class = "container" id="table_blog">
     <% @users_post.each do |x| %>
-    <h2>Title: <%= x.title%><a href="/post/<%=x.id%>/edit"><i class="fa fa-edit fa-1x">Edit</i></a></h2>
+    <h2>Title: <%= x.title%><a href="/post/<%=x.id%>/edit"><i class="fa fa-edit fa-1x"></i></a></h2>
     <h5>Username: <%= x.user_id%></h5>
     <h5>Post: <%= x.text_content %></h5>
 <% end %>
 </div>
 
+<form method="POST" action="/profile">
+<div class="field">
+    <input type="hidden" name="_method" value="DELETE">
+    <input style="background-color:red" class="btn btn-primary" value="Account De">
+    </div>
+</form>
