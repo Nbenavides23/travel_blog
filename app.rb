@@ -11,17 +11,20 @@ require './models/tags_to_multiple_posts'
 
 enable :sessions
 
+
 get "/profile" do
   @user_id = session[:user_id]
-  @profile = User.find(@user_id)
-  @users_post = @profile.post
+  @user = User.find(@user_id)
+  @users_post = @user.post.order("id DESC")
   erb :profile
 
 end
 
 get "/post" do
-  @post = Post.all
-  redirect '/profile'
+  @post = Post.all.order("id DESC")
+  @user_id = session[:user_id]
+  @user = User.find(@user_id)
+  erb :blog
 end
 
 
@@ -87,7 +90,7 @@ end
 
 get "/" do
     if session[:user_id]
-      erb :sign_in_layout
+      redirect '/post'
     else 
       erb :sign_in
       
@@ -164,29 +167,38 @@ get "/sign-out" do
   
   redirect "/"
 end
-#Delete User account
-delete '/profile' do
+
+
+get '/profile/:id/edit' do
   @user = User.find(session[:user_id])
-  @user.destroy
-
-  session[:user_id] = nil
-  
-  redirect '/'
-
-  flash[:info] = "Your account has been successfully deleted."
-
+erb :profile_edit
 end
 
+put '/profile/:id' do 
+  @user = User.find(session[:user_id])
+  @user.update(firstname: params[:firstname], lastname: params[:lastname], username: params[:username], password: params[:password], email: params[:email], birthday: params[:birthday])
+ 
+  redirect '/profile'
+end
+
+#Delete User account
+# delete '/profile' do
+#   @user = User.find(session[:user_id])
+#   @user.destroy
+
+#   session[:user_id] = nil
+  
+#   redirect '/'
+
+#   flash[:info] = "Your account has been successfully deleted."
+
+# end
 
 
-# # get '/user/:id/edit' do 
-# #   if session[:user_id] == params[:id]
-# #     #Access thier user profile edit page
-# #   else
-# #     #Redirect them and tell them they do not have access to edit other peoples profile pages
-# #   end
-# # end
-
-# get '/signed-out'do
-#   erb :signed_out_layout
-# end 
+get '/profile/delete/:id' do
+  user_id= params[:id]
+  @user = User.find(user_id)
+  @user.destroy
+  session[:user_id] = nil
+ redirect '/'
+end

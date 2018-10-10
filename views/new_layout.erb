@@ -21,7 +21,7 @@
   <% if session[:user_id] %>
  
     <a href="/post/new"><div><i class="fa fa-plus fa-2x"></i></div></a>
-    <% end %>
+  
   </nav>
  
 
@@ -39,6 +39,9 @@
 
   </div>
 </div>
+<%else%>
+<div>You need to log in to post</div>
+<%end%>
 <p>Explore.Dream.Discover</p>
 <p>To travel, to experience and learn: that is to live.</p>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.js"></script>

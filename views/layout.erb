@@ -19,22 +19,22 @@
   <!-- Navbar content --> 
   <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
   <% if session[:user_id] %>
-  <a href="/profile"><div><i class="fa fa-home fa-2x"></i></div></a>
+  <a href="/post"><div><i class="fa fa-home fa-2x"></i></div></a>
   <% end %>
    
     <h1 id="title">Welcome to the Travel Blog</h1>
     <%= yield %>
     
     <ul>
-      <% if session[:user_id] %>
+      <% if !session[:user_id] %>
 
         <!-- only show this code when signed in -->
        
-      <% else %>
+  
         <!-- only show this code when signed out -->
         <button type="button" class="btn btn-outline-primary"><a href="/sign-in" />Sign In</a></button>
         <button type="button" class="btn btn-outline-primary"><a href="/sign-up" />Sign Up</a></button>
-      <% end %>
+     
     </ul>
   </nav>
 
@@ -85,6 +85,10 @@
       </div>
   </div>
 </div>
+<%else%>
+  
+   
+<%end%>
 
 
 

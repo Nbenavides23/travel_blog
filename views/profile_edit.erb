@@ -1,1 +1,21 @@
 
+      <h2>Edit Your Account</h2>
+  <form action="/profile/<%= @user.id%>" method="POST">
+  <input type="hidden" name="_method" value="PUT"> 
+
+    
+
+    <input type="text" name="firstname" id="firstname" value= "<%=@user.firstname%>">  
+    <input type="text" name="lastname" id="lastname" placeholder="Last Name" value="<%=@user.lastname%>">  
+    <input type="text" name="email" id="email" placeholder="test@gmail.com" value="<%=@user.email%>">
+    <input type="text" name="username" id="username" placeholder="Username" value="<%=@user.username%>">
+    <input type="password" name="password" id="password" placeholder="Password" value="<%=@user.password%>">
+    <input type="text" name="birthday" id="birthday" placeholder="yy/mm/dd" value="<%=@user.birthday%>">
+    
+    <input type="submit" value="Go">
+    <a href="/profile/delete/<%=@user.id%>"> Delete</a>
+  </form>
+
+
+  
+  </form>

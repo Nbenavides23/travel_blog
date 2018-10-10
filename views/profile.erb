@@ -1,11 +1,24 @@
-<body data-gr-c-s-loaded="true" cz-shortcut-listen="true">
+
 
  <!-- Navbar content --> 
  <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
  <a href="/post/new"><div><i class="fa fa-plus fa-2x"></i></div></a>
  <a href="/sign-out"><div><i class="fa fa-sign-out fa-2x"></i></div></a>
 </nav>
+<div id="userprofile">
 
+<h1 id="username"><%= @user.firstname %><a href="/profile/<%=@user.id%>/edit">Edit</a><h1>
+
+</div>
+<div id="profile">
+<div class="articlediv">
+<a href="/blog/new"><i class="massive plus square icon"></i></a>
+</div>
+
+
+
+
+</div>
 <div class = "container" id="table_blog">
     <% @users_post.each do |x| %>
     <h2>Title: <%= x.title%><a href="/post/<%=x.id%>/edit"><i class="fa fa-edit fa-1x"></i></a></h2>
@@ -14,9 +27,4 @@
 <% end %>
 </div>
 
-<form method="POST" action="/profile">
-<div class="field">
-    <input type="hidden" name="_method" value="DELETE">
-    <input style="background-color:red" class="btn btn-primary" value="Account Delete">
-    </div>
-</form>
+
