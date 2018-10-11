@@ -22,8 +22,8 @@
     <% @users_post.each do |x| %>
     <p class="all_title">Title: <%= x.title%><a href="/post/<%=x.id%>/edit"><i class="fa fa-edit fa-1x"></i></a></p>
     <p class="p">Username: <%= x.user_id%></p>
-    <hr>
     <p>Post: <%= x.text_content %></p>
+    <hr>
 <% end %>
 </h1>
 
