@@ -9,33 +9,34 @@
 
 
   <form action="/profile/<%= @user.id%>" method="POST">
+  <input type="hidden" name="_method" value="PUT">
   <div class="form-group">
     <label>First Name</label>
-    <input class="form-control" type="text" name="firstname" id="firstname" placeholder="Demo">
+    <input class="form-control" type="text" name="firstname" id="firstname" placeholder="Demo" value="<%= @user.firstname %>">
   </div>
   <div class="form-group">
   <label>Last Name</label>
-  <input class="form-control" type="text" name="lastname" id="lastname" placeholder="Demo"> 
+  <input class="form-control" type="text" name="lastname" id="lastname" placeholder="Demo" value= "<%=@user.lastname%>"> 
   </div>
   <div class="form-group">
   <label>Username</label>
-  <input class="form-control" type="text" name="username" id="username" placeholder="demo">
+  <input class="form-control" type="text" name="username" id="username" placeholder="demo" value="<%=@user.username%>"> 
   </div>
   <div class="form-group">
   <label>Password</label>
-  <input class="form-control" type="password" name="password" id="password" placeholder="demo">
+  <input class="form-control" type="password" name="password" id="password" placeholder="demo" value="<%=@user.password%>"> 
   </div>
   <div class="form-group">
   <label>Email</label>
-  <input class="form-control" type="text" name="email" id="email" placeholder="demo@demo.com">
+  <input class="form-control" type="text" name="email" id="email" placeholder="demo@demo.com" value="<%=@user.email%>"> 
   </div>
   <div class="form-group">
   <label>Birthday</label>
-  <input class="form-control" type="text" name="birthday" id="birthday" placeholder="10/10/2010">
+  <input class="form-control" type="text" name="birthday" id="birthday" placeholder="10/10/2010" value="<%=@user.birthday%>"> 
   </div>
     <div>
     <input class="btn btn-primary" type="submit" value="Submit">
-    <a class="btn btn-danger" href="/profile/delete/<%=@user.id%>"> Account Delete</a>
   </div>
+  <a class="btn btn-danger" href="/profile/delete/<%=@user.id%>"> Account Delete</a>
   </form>
   </h1>
