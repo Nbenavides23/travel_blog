@@ -1,21 +1,41 @@
+<!-- Navbar content --> 
+<ul class="nav">
+  <li class="nav-item">
+    <a href="/post"><div><i class="fa fa-home fa-2x"></i></div></a>
+</li>
+</ul>
+<hr>
+<h2>Edit Your Account</h2>
 
-      <h2>Edit Your Account</h2>
+
   <form action="/profile/<%= @user.id%>" method="POST">
-  <input type="hidden" name="_method" value="PUT"> 
-
-    
-
-    <input type="text" name="firstname" id="firstname" value= "<%=@user.firstname%>">  
-    <input type="text" name="lastname" id="lastname" placeholder="Last Name" value="<%=@user.lastname%>">  
-    <input type="text" name="email" id="email" placeholder="test@gmail.com" value="<%=@user.email%>">
-    <input type="text" name="username" id="username" placeholder="Username" value="<%=@user.username%>">
-    <input type="password" name="password" id="password" placeholder="Password" value="<%=@user.password%>">
-    <input type="text" name="birthday" id="birthday" placeholder="yy/mm/dd" value="<%=@user.birthday%>">
-    
-    <input type="submit" value="Go">
-    <a href="/profile/delete/<%=@user.id%>"> Delete</a>
+  <div class="form-group">
+    <label>First Name</label>
+    <input class="form-control" type="text" name="firstname" id="firstname" placeholder="Demo">
+  </div>
+  <div class="form-group">
+  <label>Last Name</label>
+  <input class="form-control" type="text" name="lastname" id="lastname" placeholder="Demo"> 
+  </div>
+  <div class="form-group">
+  <label>Username</label>
+  <input class="form-control" type="text" name="username" id="username" placeholder="demo">
+  </div>
+  <div class="form-group">
+  <label>Password</label>
+  <input class="form-control" type="password" name="password" id="password" placeholder="demo">
+  </div>
+  <div class="form-group">
+  <label>Email</label>
+  <input class="form-control" type="text" name="email" id="email" placeholder="demo@demo.com">
+  </div>
+  <div class="form-group">
+  <label>Birthday</label>
+  <input class="form-control" type="text" name="birthday" id="birthday" placeholder="10/10/2010">
+  </div>
+    <div>
+    <input class="btn btn-primary" type="submit" value="Submit">
+    <a class="btn btn-danger" href="/profile/delete/<%=@user.id%>"> Account Delete</a>
+  </div>
   </form>
-
-
-  
-  </form>
+  </h1>

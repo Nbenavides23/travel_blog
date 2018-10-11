@@ -37,8 +37,7 @@ post "/post" do
  @post = Post.create(
   user_id: session[:user_id],
   title: params[:title],
-  text_content: params[:text_content],
-  image: params[:image]
+  text_content: params[:text_content]
  )
  redirect '/post'
 end
@@ -180,19 +179,6 @@ put '/profile/:id' do
  
   redirect '/profile'
 end
-
-#Delete User account
-# delete '/profile' do
-#   @user = User.find(session[:user_id])
-#   @user.destroy
-
-#   session[:user_id] = nil
-  
-#   redirect '/'
-
-#   flash[:info] = "Your account has been successfully deleted."
-
-# end
 
 
 get '/profile/delete/:id' do
