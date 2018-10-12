@@ -48,6 +48,11 @@ ul, nav {
   width: 350px;
 }
 
+.blog_post {
+  font-family: 'Abel', sans-serif;
+  font-size: 28px;
+}
+
 #table_blog {
   font-family: 'Abel', sans-serif;
 }
