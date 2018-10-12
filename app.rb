@@ -49,7 +49,7 @@ get "/post/:id/edit" do
   if session[:user_id] == @post.user_id.to_i
   erb :edit
   else
-    "Error 404, you can't edit others people post"
+    "Ooop... Error 404 Sorry, but you can't edit others people post"
     
   end
  
