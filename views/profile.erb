@@ -7,24 +7,24 @@
   <a href="/profile"><div><i class="fa fa-user fa-2x"></i></div></a>
   </li>
   <li class="nav-item">
-  <a href="/post/new"><div><i class="fa fa-plus fa-2x"></i></div></a>
-  </li>
-  <li class="nav-item">
   <a href="/sign-out"><div><i class="fa fa-sign-out fa-2x"></i></div></a>
   </li>
 </ul>
+<hr>
 <div>
-<p class="edit_title"><strong>Hello</strong> <%= @user.firstname %>!<a class="edit" href="/profile/<%=@user.id%>/edit">Edit Profile</a></p>
+    <p class="edit_title" class="text-capitalize"><strong>Hello</strong> <%= @user.firstname %>!<a class="edit" href="/profile/<%=@user.id%>/edit"><button class="btn btn-outline">Edit Profile</a></p></button>
 </div>
 <hr>
+<div id="table_blog"><p class="text-center">Create a Post <a href="/post/new"><i class="fa fa-comment fa-2x"></i></a></p></div>
 <h1 style="background-color: #E0ECF8; width: 100%; height: 100%;">
 <div id="table_blog" >
     <% @users_post.each do |x| %>
     <p class="all_title">Title: <%= x.title%><a href="/post/<%=x.id%>/edit"><i class="fa fa-edit fa-1x"></i></a></p>
     <p class="p">Username: <%= x.user_id%></p>
-    <p>Post: <%= x.text_content %></p>
+    <p class="all_text">Post: <%= x.text_content %></p>
     <hr>
 <% end %>
 </h1>
 
 </div>
+
